@@ -196,7 +196,15 @@ export function moveParticle(row, col, newRow, newCol, swap) {
     }
 
     if (getParticle(newRow, newCol)) {
-        return false;
+        if (swap && swap(getParticle(newRow, newCol))) {
+            const temp = grid[newRow][newCol];
+            grid[newRow][newCol] = grid[row][col];
+            grid[row][col] = temp;
+            return true;
+        } 
+        else {
+            return false;
+        }
     }
     // TODO move a particle from (row, col) to (newRow, newCol)
     grid[newRow][newCol] = grid[row][col];

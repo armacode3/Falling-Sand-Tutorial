@@ -46,6 +46,7 @@ export class Sand extends Particle {
 
     swap(other) {
         // TODO make sand fall under the water
+        return other.type == "water";
     }
 
     update(row, col) {
@@ -70,4 +71,33 @@ export function checkParticleType(value) {
         return new Sand();
     } 
     // TODO create new particles
+    if (value == "Sand") {
+        return new Sand();
+    }
+    if (value == "Water") {
+        return new Water();
+    }
+}
+
+export class Water extends Particle {
+    constructor() {
+        super();
+        this.color = "blue";
+        this.type = "water";
+    }
+
+    update(row, col) {
+        // Try to move down
+        if (getRandomInt(0, 2) && !getParticle(row+1, col)) {
+            moveParticle(row, col, row+1, col, super.swap);
+        } 
+        
+        // Move left or right
+        if (getRandomInt(0, 1) && !getParticle(row, col+1)) {
+            moveParticle(row, col, row, col+1, super.swap);
+        }
+        else if (!getParticle(row, col-1)) {
+            moveParticle(row, col, row, col-1, super.swap);
+        }
+    }
 }
