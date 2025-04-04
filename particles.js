@@ -302,7 +302,7 @@ export class Steam extends Particle {
         super();
         this.color = "rgb(240, 240, 240)";
         this.type = "steam";
-        this.maxDuration = 200;
+        this.maxDuration = 300;
         this.duration = 0;
     }
 
@@ -335,7 +335,7 @@ export class Steam extends Particle {
             setParticle(row, col, null);
         }
 
-        if (getRandomInt(0, 1000) < 1) {
+        if (getRandomInt(0, 10000) < 1) {
             setParticle(row, col, new Water());
         }
     }

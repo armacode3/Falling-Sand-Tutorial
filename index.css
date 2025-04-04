@@ -1,5 +1,6 @@
 #canvas {
-    border: 1px solid black;
+    background-color: white;
+    border: 5px solid black;
 }
 
 .outer {
@@ -15,3 +16,16 @@
     align-items: center;
     gap: 10px
 }
+
+body {
+    background-color: rgb(53, 56, 57);
+    color: white;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
